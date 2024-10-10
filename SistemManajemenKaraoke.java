@@ -5,6 +5,9 @@ public class SistemManajemenKaraoke {
         sistemKaraoke sistem = new sistemKaraoke();
         Scanner input = new Scanner(System.in);
 
+        sistem.tambahRuangan(1, 50000, jenisRuangan.REGULAR);
+        sistem.tambahRuangan(2, 60000, jenisRuangan.VIP);
+        sistem.tambahRuangan(3, 70000, jenisRuangan.VVIP);
 
         System.out.println("-- SISTEM MANAJEMEN KARAOKE --");
         System.out.println("1. Tambah Ruangan");
