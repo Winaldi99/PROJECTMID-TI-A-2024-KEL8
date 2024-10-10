@@ -39,6 +39,11 @@ public class SistemManajemenKaraoke {
             case 3:
                 break;
             case 4:
+                System.out.println("Masukkan judul Lagu: ");
+                String judul = input.nextLine();
+                System.out.println("Masukkan nama Penyanyi: ");
+                String penyanyi = input.nextLine();
+                sistem.tambahLagu(judul, penyanyi);
                 break;
             case 5:
                 break;
@@ -118,6 +123,11 @@ class sistemKaraoke {
     public void tambahRuangan(int nomorRuangan, double harga, jenisRuangan jenis) {
         daftarRuangan.add(new ruangan(nomorRuangan, harga, jenis));
         System.out.println("Ruangan " + nomorRuangan + " (" + jenis + ") Berhasil Ditambahkan.");
+    }
+
+    public void tambahLagu(String judul, String penyanyi) {
+        daftarLagu.add(new lagu(judul, penyanyi));
+        System.out.println("Lagu '" + judul + "' oleh " + penyanyi + " Berhasil Ditambahkan.");
     }
 
 }
