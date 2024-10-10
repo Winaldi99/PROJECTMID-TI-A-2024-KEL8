@@ -80,3 +80,18 @@ class ruangan {
     public jenisRuangan getJenis() {return jenis;}
 }
 
+class lagu {
+    private String judul;
+    private String penyanyi;
+
+    public lagu(String judul, String penyanyi) {
+        this.judul = judul;
+        this.penyanyi = penyanyi;
+    }
+
+    public String getJudul() {return judul;}
+    public String getPenyanyi() {return penyanyi;}
+}
+
+
+
