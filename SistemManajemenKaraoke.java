@@ -8,6 +8,8 @@ public class SistemManajemenKaraoke {
         sistem.tambahRuangan(1, 50000, jenisRuangan.REGULAR);
         sistem.tambahRuangan(2, 60000, jenisRuangan.VIP);
         sistem.tambahRuangan(3, 70000, jenisRuangan.VVIP);
+        sistem.tambahLagu("Shape of You", "Ed Sheeran");
+        sistem.tambahLagu("Uptown Funk", "Mark Ronson ft. Bruno Mars");
 
         System.out.println("-- SISTEM MANAJEMEN KARAOKE --");
         System.out.println("1. Tambah Ruangan");
