@@ -1,7 +1,4 @@
-import java.util.Scanner;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Scanner;
 public class SistemManajemenKaraoke {
     public static void main(String[] args) {
@@ -91,6 +88,22 @@ class lagu {
 
     public String getJudul() {return judul;}
     public String getPenyanyi() {return penyanyi;}
+}
+
+class sistemKaraoke {
+    private List<ruangan> daftarRuangan;
+    private List<lagu> daftarLagu;
+    private Map<Integer, List<lagu>> daftarPutar;
+    private double totalPendapatan;
+
+    public sistemKaraoke() {
+        daftarRuangan = new ArrayList<>();
+        daftarLagu = new ArrayList<>();
+        daftarPutar = new HashMap<>();
+        totalPendapatan = 0;
+    }
+
+
 }
 
 
