@@ -2,7 +2,9 @@ import java.util.*;
 import java.util.Scanner;
 public class SistemManajemenKaraoke {
     public static void main(String[] args) {
+        sistemKaraoke sistem = new sistemKaraoke();
         Scanner input = new Scanner(System.in);
+
 
         System.out.println("-- SISTEM MANAJEMEN KARAOKE --");
         System.out.println("1. Tambah Ruangan");
@@ -21,6 +23,13 @@ public class SistemManajemenKaraoke {
 
         switch (pilih) {
             case 1:
+                System.out.println("Masukkan nomor Ruangan: ");
+                int nomorRuangan = Integer.parseInt(input.nextLine());
+                System.out.println("Masukkan harga Ruangan: ");
+                double harga = Double.parseDouble(input.nextLine());
+                System.out.println("Masukkan jenis Ruangan ( REGULAR / VIP / VVIP ): ");
+                jenisRuangan jenis = jenisRuangan.valueOf(input.nextLine().toUpperCase());
+                sistem.tambahRuangan(nomorRuangan, harga, jenis);
                 break;
             case 2:
                 break;
@@ -103,6 +112,10 @@ class sistemKaraoke {
         totalPendapatan = 0;
     }
 
+    public void tambahRuangan(int nomorRuangan, double harga, jenisRuangan jenis) {
+        daftarRuangan.add(new ruangan(nomorRuangan, harga, jenis));
+        System.out.println("Ruangan " + nomorRuangan + " (" + jenis + ") Berhasil Ditambahkan.");
+    }
 
 }
 
