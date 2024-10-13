@@ -39,6 +39,8 @@ public class SistemManajemenKaraoke {
             case 2:
                 break;
             case 3:
+                System.out.println("Masukkan nimir ruangan yang ingin dipesan: ");
+                sistem.pesanRuangan(Integer.parseInt(input.nextLine()));
                 break;
             case 4:
                 System.out.println("Masukkan judul Lagu: ");
@@ -132,6 +134,18 @@ class sistemKaraoke {
         System.out.println("Lagu '" + judul + "' oleh " + penyanyi + " Berhasil Ditambahkan.");
     }
 
+    public void pesanRuangan(int nomorRuangan) {
+        for (ruangan ruangan : daftarRuangan) {
+            if (ruangan.getNomorRuangan() == nomorRuangan && !
+                    ruangan.isDipakai()) {
+                ruangan.setDipakai(true);
+                totalPendapatan += ruangan.getHarga();
+                System.out.println("Ruangan " + nomorRuangan + " berhasil dipesan.");
+                return;
+            }
+        }
+        System.out.println("Ruangan " + nomorRuangan + "tidak tersedia atau tidak ada.");
+    }
 }
 
 
