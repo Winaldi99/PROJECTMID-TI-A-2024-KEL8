@@ -38,6 +38,7 @@ public class SistemManajemenKaraoke {
                 continue;
             }
             clearScreen();
+
             switch (pilih) {
                 case 1:
                     System.out.println("Masukkan nomor Ruangan: ");
@@ -78,6 +79,8 @@ public class SistemManajemenKaraoke {
                     sistem.lihatDaftarPutar(Integer.parseInt(scanner.nextLine()));
                     break;
                 case 8:
+                    System.out.println("Masukkan nomor ruangan yang ingin selesai digunakan");
+                    sistem.selesaiMenggunakanRuangan(Integer.parseInt(scanner.nextLine()));
                     break;
                 case 9:
                     break;
@@ -222,6 +225,18 @@ class sistemKaraoke {
         } else {
             System.out.println("Tidak ada daftar putar untuk Ruangan " + nomorRuangan);
         }
+    }
+
+    public void selesaiMenggunakanRuangan(int nomorRuangan)  {
+        for(ruangan ruangan : daftarRuangan) {
+            if (ruangan.getNomorRuangan() == nomorRuangan && ruangan.isDipakai()) {
+                ruangan.setDipakai(false);
+                daftarPutar.remove(nomorRuangan);
+                System.out.println("Ruangan " + nomorRuangan + " sekarang tersedia.");
+                return;
+            }
+        }
+        System.out.println("Ruangan " + nomorRuangan + "tidak sedang dipakai atau tidak ada.");
     }
 }
 
