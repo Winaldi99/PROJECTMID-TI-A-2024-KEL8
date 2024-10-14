@@ -71,11 +71,11 @@ public class SistemManajemenKaraoke {
                     int nomorRuanganPutar = Integer.parseInt(scanner.nextLine());
                     System.out.println("Masukkan judul lagu: ");
                     String judulPutar = scanner.nextLine();
-
                     sistem.tambahKeDaftarPutar(nomorRuanganPutar,judulPutar);
-
                     break;
                 case 7:
+                    System.out.println("Masukkan nomor ruangan: ");
+                    sistem.lihatDaftarPutar(Integer.parseInt(scanner.nextLine()));
                     break;
                 case 8:
                     break;
@@ -210,7 +210,22 @@ class sistemKaraoke {
         }
         System.out.println("Lagu tidak ditemukan dalam daftar lagu.");
     }
+
+    public void lihatDaftarPutar(int nomorRuangan) {
+        List<lagu> daftarPutarRuangan =
+                daftarPutar.get(nomorRuangan);
+        if (daftarPutarRuangan != null && !daftarPutarRuangan.isEmpty()) {
+            System.out.println("Daftar putar untuk Ruangan " + ":");
+            for (lagu lagu : daftarPutarRuangan) {
+                System.out.println(lagu.getJudul() + " oleh " + lagu.getPenyanyi());
+            }
+        } else {
+            System.out.println("Tidak ada daftar putar untuk Ruangan " + nomorRuangan);
+        }
+    }
 }
+
+
 
 
 
