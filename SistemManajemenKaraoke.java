@@ -1,9 +1,12 @@
-import java.util.*;
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 public class SistemManajemenKaraoke {
     public static void main(String[] args) {
         sistemKaraoke sistem = new sistemKaraoke();
-        Scanner input = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         sistem.tambahRuangan(1, 50000, jenisRuangan.REGULAR);
         sistem.tambahRuangan(2, 60000, jenisRuangan.VIP);
@@ -11,64 +14,74 @@ public class SistemManajemenKaraoke {
         sistem.tambahLagu("Shape of You", "Ed Sheeran");
         sistem.tambahLagu("Uptown Funk", "Mark Ronson ft. Bruno Mars");
 
-        System.out.println("-- SISTEM MANAJEMEN KARAOKE --");
-        System.out.println("1. Tambah Ruangan");
-        System.out.println("2. Lihat Daftar Ruangan");
-        System.out.println("3 Pesan Ruangan");
-        System.out.println("4. Tambah Lagu");
-        System.out.println("5. Cari Lagu");
-        System.out.println("6. Tambah Lagu ke Daftar Putar Ruangan");
-        System.out.println("7. Lihat Daftar Putar Ruangan");
-        System.out.println("8. Selesai Menggunakan Ruangan");
-        System.out.println("9. Lihat Total Pendapatan");
-        System.out.println("10. Laporan Penggunaan Ruangan");
-        System.out.println("0. E X I T");
-        System.out.println("Pilih Opsi : ");
-        int pilih = input.nextInt();
+        while (true) {
+            System.out.println("-- SISTEM MANAJEMEN KARAOKE --");
+            System.out.println("1. Tambah Ruangan");
+            System.out.println("2. Lihat Daftar Ruangan");
+            System.out.println("3. Pesan Ruangan");
+            System.out.println("4. Tambah Lagu");
+            System.out.println("5. Cari Lagu");
+            System.out.println("6. Tambah Lagu ke Daftar Putar Ruangan");
+            System.out.println("7. Lihat Daftar Putar Ruangan");
+            System.out.println("8. Selesai Menggunakan Ruangan");
+            System.out.println("9. Lihat Total Pendapatan");
+            System.out.println("10. Laporan Penggunaan Ruangan");
+            System.out.println("0. E X I T");
+            System.out.println("Pilih Opsi : ");
+            int pilih;
 
-        switch (pilih) {
-            case 1:
-                System.out.println("Masukkan nomor Ruangan: ");
-                int nomorRuangan = Integer.parseInt(input.nextLine());
-                System.out.println("Masukkan harga Ruangan: ");
-                double harga = Double.parseDouble(input.nextLine());
-                System.out.println("Masukkan jenis Ruangan ( REGULAR / VIP / VVIP ): ");
-                jenisRuangan jenis = jenisRuangan.valueOf(input.nextLine().toUpperCase());
-                sistem.tambahRuangan(nomorRuangan, harga, jenis);
-                break;
-            case 2:
-                break;
-            case 3:
-                System.out.println("Masukkan nimir ruangan yang ingin dipesan: ");
-                sistem.pesanRuangan(Integer.parseInt(input.nextLine()));
-                break;
-            case 4:
-                System.out.println("Masukkan judul Lagu: ");
-                String judul = input.nextLine();
-                System.out.println("Masukkan nama Penyanyi: ");
-                String penyanyi = input.nextLine();
-                sistem.tambahLagu(judul, penyanyi);
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            case 7:
-                break;
-            case 8:
-                break;
-            case 9:
-                break;
-            case 10:
-                break;
-            case 0:
-                System.out.println("Sistem Berhenti.");
-                input.close();
-                break;
-            default:
-                System.out.println("Pilihan tidak valid. Pilih (1 - 10)");
+            try {
+                pilih = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Input tidak valid");
+                continue;
+            }
 
+            switch (pilih) {
+                case 1:
+                    System.out.println("Masukkan nomor Ruangan: ");
+                    int nomorRuangan = Integer.parseInt(scanner.nextLine());
+                    System.out.println("Masukkan harga Ruangan: ");
+                    double harga = Double.parseDouble(scanner.nextLine());
+                    System.out.println("Masukkan jenis Ruangan ( REGULAR / VIP / VVIP ): ");
+                    jenisRuangan jenis = jenisRuangan.valueOf(scanner.nextLine().toUpperCase());
+                    sistem.tambahRuangan(nomorRuangan, harga, jenis);
+                    break;
+                case 2:
+                    sistem.lihatDaftarRuangan();
+                    break;
+                case 3:
+                    System.out.println("Masukkan nomor ruangan yang ingin dipesan: ");
+                    sistem.pesanRuangan(Integer.parseInt(scanner.nextLine()));
+                    break;
+                case 4:
+                    System.out.println("Masukkan judul Lagu: ");
+                    String judul = scanner.nextLine();
+                    System.out.println("Masukkan nama Penyanyi: ");
+                    String penyanyi = scanner.nextLine();
+                    sistem.tambahLagu(judul, penyanyi);
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                case 10:
+                    break;
+                case 0:
+                    System.out.println("Sistem Berhenti.");
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Pilihan tidak valid. Pilih (1 - 10)");
+            }
         }
+
     }
 }
 
@@ -145,6 +158,17 @@ class sistemKaraoke {
             }
         }
         System.out.println("Ruangan " + nomorRuangan + "tidak tersedia atau tidak ada.");
+    }
+
+    public void lihatDaftarRuangan() {
+        if (daftarRuangan.isEmpty()) {
+            System.out.println("Ruangan tidak tersedia.");
+            return;
+        }
+        for (ruangan ruangan : daftarRuangan) {
+            System.out.println("Ruangan " + ruangan.getNomorRuangan() + " (" + ruangan.getJenis() + "): "
+                    + (ruangan.isDipakai() ? "Terpakai" : "Tersedia") + " - Harga: Rp" + ruangan.getHarga());
+        }
     }
 }
 
