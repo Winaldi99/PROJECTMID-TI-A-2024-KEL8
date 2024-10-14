@@ -15,6 +15,7 @@ public class SistemManajemenKaraoke {
         sistem.tambahLagu("Uptown Funk", "Mark Ronson ft. Bruno Mars");
 
         while (true) {
+
             System.out.println("-- SISTEM MANAJEMEN KARAOKE --");
             System.out.println("1. Tambah Ruangan");
             System.out.println("2. Lihat Daftar Ruangan");
@@ -36,7 +37,7 @@ public class SistemManajemenKaraoke {
                 System.out.println("Input tidak valid");
                 continue;
             }
-
+            clearScreen();
             switch (pilih) {
                 case 1:
                     System.out.println("Masukkan nomor Ruangan: ");
@@ -81,7 +82,11 @@ public class SistemManajemenKaraoke {
                     System.out.println("Pilihan tidak valid. Pilih (1 - 10)");
             }
         }
-
+    }
+    public static void clearScreen() {
+        for(int i = 0; i < 50; i++) {
+            System.out.println();
+        }
     }
 }
 
@@ -122,6 +127,7 @@ class lagu {
 
     public String getJudul() {return judul;}
     public String getPenyanyi() {return penyanyi;}
+
 }
 
 class sistemKaraoke {
