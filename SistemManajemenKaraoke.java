@@ -215,7 +215,7 @@ class sistemKaraoke {
         List<lagu> daftarPutarRuangan =
                 daftarPutar.get(nomorRuangan);
         if (daftarPutarRuangan != null && !daftarPutarRuangan.isEmpty()) {
-            System.out.println("Daftar putar untuk Ruangan " + ":");
+            System.out.println("Daftar putar untuk Ruangan " + nomorRuangan + ":");
             for (lagu lagu : daftarPutarRuangan) {
                 System.out.println(lagu.getJudul() + " oleh " + lagu.getPenyanyi());
             }
