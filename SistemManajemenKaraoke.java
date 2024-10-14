@@ -67,6 +67,13 @@ public class SistemManajemenKaraoke {
                     sistem.cariLagu(scanner.nextLine());
                     break;
                 case 6:
+                    System.out.println("Masukkan nomor ruangan: ");
+                    int nomorRuanganPutar = Integer.parseInt(scanner.nextLine());
+                    System.out.println("Masukkan judul lagu: ");
+                    String judulPutar = scanner.nextLine();
+
+                    sistem.tambahKeDaftarPutar(nomorRuanganPutar,judulPutar);
+
                     break;
                 case 7:
                     break;
@@ -191,6 +198,17 @@ class sistemKaraoke {
         if (!ditemukan) {
             System.out.println("Tidak ada lagu yang cocok: " + katakunci);
         }
+    }
+
+    public void tambahKeDaftarPutar(int nomorRuangan, String judul) {
+        for (lagu lagu : daftarLagu) {
+            if (lagu.getJudul().equalsIgnoreCase(judul)) {
+                daftarPutar.computeIfAbsent(nomorRuangan, k -> new ArrayList<>()).add(lagu);
+                System.out.println("Menambahkan " + judul + " ke daftar putar Ruangan " + nomorRuangan + ".");
+                return;
+            }
+        }
+        System.out.println("Lagu tidak ditemukan dalam daftar lagu.");
     }
 }
 
