@@ -62,6 +62,8 @@ public class SistemManajemenKaraoke {
                     sistem.tambahLagu(judul, penyanyi);
                     break;
                 case 5:
+                    System.out.println("Masukkan kata kunci pencarian: ");
+                    sistem.cariLagu(scanner.nextLine());
                     break;
                 case 6:
                     break;
@@ -170,7 +172,22 @@ class sistemKaraoke {
                     + (ruangan.isDipakai() ? "Terpakai" : "Tersedia") + " - Harga: Rp" + ruangan.getHarga());
         }
     }
+
+    public void cariLagu(String katakunci) {
+        boolean ditemukan = false;
+        for (lagu lagu : daftarLagu) {
+            if (lagu.getJudul().toLowerCase().contains(katakunci.toLowerCase()) ||
+                    lagu.getPenyanyi().toLowerCase().contains(katakunci.toLowerCase())) {
+                System.out.println(lagu.getJudul() + " oleh " + lagu.getPenyanyi());
+                ditemukan = true;
+            }
+        }
+        if (!ditemukan) {
+            System.out.println("Tidak ada lagu yang cocok: " + katakunci);
+        }
+    }
 }
+
 
 
 
