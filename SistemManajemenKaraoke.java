@@ -83,8 +83,10 @@ public class SistemManajemenKaraoke {
                     sistem.selesaiMenggunakanRuangan(Integer.parseInt(scanner.nextLine()));
                     break;
                 case 9:
+                    sistem.lihatTotalPendapatan();
                     break;
                 case 10:
+                    sistem.laporanPenggunaanRuangan();
                     break;
                 case 0:
                     System.out.println("Sistem Berhenti.");
@@ -227,8 +229,8 @@ class sistemKaraoke {
         }
     }
 
-    public void selesaiMenggunakanRuangan(int nomorRuangan)  {
-        for(ruangan ruangan : daftarRuangan) {
+    public void selesaiMenggunakanRuangan(int nomorRuangan) {
+        for (ruangan ruangan : daftarRuangan) {
             if (ruangan.getNomorRuangan() == nomorRuangan && ruangan.isDipakai()) {
                 ruangan.setDipakai(false);
                 daftarPutar.remove(nomorRuangan);
@@ -237,6 +239,21 @@ class sistemKaraoke {
             }
         }
         System.out.println("Ruangan " + nomorRuangan + "tidak sedang dipakai atau tidak ada.");
+    }
+
+    public void lihatTotalPendapatan() {
+        System.out.println("Total pendapatan: Rp" + totalPendapatan); }
+
+
+    public void laporanPenggunaanRuangan() {
+        int terpakai = 0;
+        for(ruangan ruangan : daftarRuangan) {
+            if(ruangan.isDipakai()) {
+                terpakai++;
+
+            }
+        }
+        System.out.println("Penggunaan ruangan: " + terpakai + " dari " + daftarRuangan.size() + " ruangan sedang dipakai. ");
     }
 }
 
