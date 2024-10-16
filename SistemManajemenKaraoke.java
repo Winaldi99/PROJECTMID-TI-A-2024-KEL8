@@ -13,6 +13,8 @@ public class SistemManajemenKaraoke {
         sistem.tambahRuangan(3, 100000, jenisRuangan.VVIP);
         sistem.tambahLagu("Shape of You", "Ed Sheeran");
         sistem.tambahLagu("Uptown Funk", "Mark Ronson ft. Bruno Mars");
+        sistem.tambahLagu( "I Don't Love You", "My Chemical Romance");
+        sistem.tambahLagu("Basket Case", "Green Day");
 
         while (true) {
 
